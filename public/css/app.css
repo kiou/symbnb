@@ -1,0 +1,38 @@
+.adtitle h1, .adtitle p{
+    color: #fff;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5); 
+}
+
+.adtitle{
+    padding: 2em;
+    background-size: cover;
+    background-position: center center;
+}
+
+.container{
+    margin-top: 20px;
+}
+
+.carousel-caption{
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5); 
+}
+
+.form-collection{
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+.form-collection ul{
+    list-style: none;
+}
+
+.form-collection ul li{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.form-collection ul li:last-child{
+    border-bottom: none;
+}

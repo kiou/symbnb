@@ -1,3 +1,26 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+homepage:
+    path:     /
+    defaults: { _controller: App\Controller\HomeController::home }
+
+#Ads admin
+ads_create:
+    path:     /ads/new
+    defaults: { _controller: App\Controller\AdController::create }
+
+#Ads client
+ads_index:
+    path:     /ads
+    defaults: { _controller: App\Controller\AdController::index }
+
+ads_show:
+    path:     /ads/{slug}
+    defaults: { _controller: App\Controller\AdController::show }
+    requirements:
+        slug: ([a-z-0-9]*)
+
+ads_edit:
+    path:     /ads/{slug}/edit
+    defaults: { _controller: App\Controller\AdController::edit }
+    requirements:
+        slug: ([a-z-0-9]*)
+
