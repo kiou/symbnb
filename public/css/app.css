@@ -36,3 +36,19 @@
 .form-collection ul li:last-child{
     border-bottom: none;
 }
+
+.avatar{
+    border-radius: 50%;
+    max-height: 128px;
+    max-width: 128px;
+}
+
+.avatar-medium{
+    height:64px;
+    width:64px;
+}
+
+.avatar-mini{
+    height:24px;
+    width: 24px;
+}

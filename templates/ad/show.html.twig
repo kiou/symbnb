@@ -50,18 +50,16 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <div class="col-4">
-                        <img src="http://placehold.it/64x64">
+                    <div class="col-3">
+                        <a href="{{ path('user_show',{'slug':ad.author.slug}) }}"><img src="{{ad.author.picture}}" class="avatar avatar-medium"></a>
                     </div>
                     <div class="col">
-                        <h3>Joseph dupont</h3>
-                        <span class="badge badge-primary">3 annonces</span>
+                        <h3><a href="{{ path('user_show',{'slug':ad.author.slug}) }}">{{ad.author.firstName}} {{ad.author.lastname}}</a></h3>
+                        <span class="badge badge-primary">{{ad.author.ads | length}} annonces</span>
                     </div>
                 </div>
 
-                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le fa</p>
-                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le fa</p>
-                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le fa</p>
+                {{ad.author.description|raw}}
             </div>
         </div>
     </div>

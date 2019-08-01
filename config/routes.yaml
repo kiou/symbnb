@@ -24,3 +24,31 @@ ads_edit:
     requirements:
         slug: ([a-z-0-9]*)
 
+#Account
+login:
+    path: /login
+    defaults: { _controller: App\Controller\AccountController::login }
+
+logout:
+    path: /logout
+
+register:
+    path: /register
+    defaults: { _controller: App\Controller\AccountController::register }
+
+account_profil:
+    path: /account/profil
+    defaults: { _controller: App\Controller\AccountController::profil }
+
+account_password:
+    path: /account/password-update
+    defaults: { _controller: App\Controller\AccountController::updatePassword }
+
+account_index:
+    path: /account
+    defaults: { _controller: App\Controller\AccountController::myAccount }
+
+#User
+user_show:
+    path: /user/{slug}
+    defaults: { _controller: App\Controller\UserController::index }

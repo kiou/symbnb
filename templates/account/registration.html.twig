@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription au site{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Inscrivez vous sur notre site !</h1>
+
+    {{ form_start(form) }}
+
+		{{ form_label(form.firstName, "Prénom") }}
+		{{ form_widget(form.firstName) }}
+
+		{{ form_label(form.lastName, "Nom") }}
+		{{ form_widget(form.lastName) }}
+
+		{{ form_label(form.email, "Email") }}
+		{{ form_widget(form.email) }}
+
+		{{ form_label(form.picture, "Photo de profil") }}
+		{{ form_widget(form.picture) }}
+
+		{{ form_label(form.hash, "Password") }}
+		{{ form_widget(form.hash) }}
+
+		{{ form_label(form.hashConfirm, "Confirmez votre password") }}
+		{{ form_widget(form.hashConfirm) }}
+
+		{{ form_label(form.introduction, "Introduction") }}
+		{{ form_widget(form.introduction) }}
+
+		{{ form_label(form.description, "Description détailée") }}
+		{{ form_widget(form.description) }}
+
+        <br>
+
+        {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock %}
