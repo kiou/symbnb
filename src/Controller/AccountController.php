@@ -9,8 +9,10 @@ use App\Form\RegistrationType;
 use App\Form\PasswordUpdateType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -58,6 +60,14 @@ class AccountController extends Controller
         ]);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
+     */
     public function profil(Request $request, ObjectManager $manager)
     {
         $user = $this->getUser();
@@ -83,6 +93,15 @@ class AccountController extends Controller
         ]);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @param ObjectManager $manager
+     * @return Response
+     */
     public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager)
     {
         $updatePassword = new UpdatePassword();
@@ -122,6 +141,11 @@ class AccountController extends Controller
         ]);
     }
 
+    /**
+     * @IsGranted("ROLE_USER")
+     *
+     * @return Response
+     */
     public function myAccount()
     {
         return $this->render('user/index.html.twig',[

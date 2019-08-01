@@ -24,6 +24,12 @@ ads_edit:
     requirements:
         slug: ([a-z-0-9]*)
 
+ads_delete:
+    path:     /ads/{slug}/delete
+    defaults: { _controller: App\Controller\AdController::delete }
+    requirements:
+        slug: ([a-z-0-9]*)
+
 #Account
 login:
     path: /login
