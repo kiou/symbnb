@@ -24,8 +24,6 @@ class AccountController extends Controller
         $error = $utils->getLastAuthenticationError();
         $username = $utils->getLastUsername();
         
-        dump($error);
-
         return $this->render('account/login.html.twig',[
             'hasError' => (!is_null($error)) ? true : false,
             'username' => $username
@@ -151,5 +149,15 @@ class AccountController extends Controller
         return $this->render('user/index.html.twig',[
             'user' => $this->getUser()
         ]);
+    }
+
+    /**
+     * @IsGranted("ROLE_USER")
+     *
+     * @return response
+     */
+    public function bookings()
+    {
+        return $this->render('account/bookings.html.twig');
     }
 }

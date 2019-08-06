@@ -54,7 +54,22 @@ account_index:
     path: /account
     defaults: { _controller: App\Controller\AccountController::myAccount }
 
+account_bookings:
+    path: /account/bookings
+    defaults: { _controller: App\Controller\AccountController::bookings }
+
 #User
 user_show:
     path: /user/{slug}
     defaults: { _controller: App\Controller\UserController::index }
+
+#Booking
+booking_create:
+    path: /ads/{slug}/book
+    defaults: { _controller: App\Controller\BookingController::book }
+
+booking_show:
+    path:     /booking/{id}
+    defaults: { _controller: App\Controller\BookingController::show }
+    requirements:
+        id: \d+
