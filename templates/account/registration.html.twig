@@ -5,33 +5,59 @@
 {% block body %}
 
 <div class="container">
-    <h1>Inscrivez vous sur notre site !</h1>
+    <h1 class="my-5">Inscrivez vous sur notre site !</h1>
 
     {{ form_start(form) }}
+		<div class="row">
+			<div class="col-6">
 
-		{{ form_label(form.firstName, "Prénom") }}
-		{{ form_widget(form.firstName) }}
+				<div class="alert alert-light">
+					<h2>Informations générales</h2>
+					<hr>
 
-		{{ form_label(form.lastName, "Nom") }}
-		{{ form_widget(form.lastName) }}
+						{{ form_label(form.firstName, "Prénom") }}
+					{{ form_widget(form.firstName) }}
 
-		{{ form_label(form.email, "Email") }}
-		{{ form_widget(form.email) }}
+					{{ form_label(form.lastName, "Nom") }}
+					{{ form_widget(form.lastName) }}
 
-		{{ form_label(form.picture, "Photo de profil") }}
-		{{ form_widget(form.picture) }}
+					{{ form_label(form.email, "Email") }}
+					{{ form_widget(form.email) }}
 
-		{{ form_label(form.hash, "Password") }}
-		{{ form_widget(form.hash) }}
+					{{ form_label(form.picture, "Photo de profil") }}
+					{{ form_widget(form.picture) }}
+				</div>
+			</div>
+		
 
-		{{ form_label(form.hashConfirm, "Confirmez votre password") }}
-		{{ form_widget(form.hashConfirm) }}
+			<div class="col-6">
 
-		{{ form_label(form.introduction, "Introduction") }}
-		{{ form_widget(form.introduction) }}
+				<div class="alert alert-light">
+					<h2>Mot de passe</h2>
+					<hr>
 
-		{{ form_label(form.description, "Description détailée") }}
-		{{ form_widget(form.description) }}
+					{{ form_label(form.hash, "Password") }}
+					{{ form_widget(form.hash) }}
+
+					{{ form_label(form.hashConfirm, "Confirmez votre password") }}
+					{{ form_widget(form.hashConfirm) }}
+				</div>
+
+				<div class="alert alert-light">
+					<h2>Détails</h2>
+					<hr>
+
+					{{ form_label(form.introduction, "Introduction") }}
+					{{ form_widget(form.introduction) }}
+
+					{{ form_label(form.description, "Description détailée") }}
+					{{ form_widget(form.description) }}
+
+				</div>
+
+			</div>
+
+		</div>
 
         <br>
 

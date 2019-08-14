@@ -5,37 +5,38 @@
 {% block body %}
 
     <div class="container">
-        <h1>Réserver pour l'annonce: {{ad.title}} </h1>
+        <h1>Réserver pour l'annonce: <em>{{ad.title}}</em> </h1>
 
         <p>Vous êtes sur le point de reserver le bien de, <strong>{{ad.author.firstName}} {{ad.author.lastName}}</strong>, dites nous tout, on s'occupe du reste ! </p>
     
         {{ form_start(form) }}
             <div class="alert alert-light">
-                <h2>Commenncez par nous dire quelles sont les dates qui vous interessent !</h2>
+                <h4>Commencez par nous dire quelles sont les dates qui vous interessent !</h4>
                 <div clas="row">
-                    <div class="col">
+                    <div class="col-6">
                         {{ form_label(form.startDate, "Date d'arrivée") }}
 		                {{ form_widget(form.startDate) }}
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         {{ form_label(form.endDate, "Date de départ") }}
 		                {{ form_widget(form.endDate) }}
                     </div>
 
-                    <h4>Montant du séjour: <span id="amount">...</span> €</h4>
-                    <span id="days">0</span> nuit(s) à {{ad.price}} / nuit
+                    <h4 class="mt-4">Montant du séjour: <span id="amount">...</span> €</h4>
+                    <span id="days">0</span>nuit(s) à {{ad.price | number_format(2, ',', ' ')}} € /  par nuit
 
-                    <h2>Vous avez un commentaire</h2>
+                    <h4 class="mt-4">Vous avez un commentaire</h4>
                     {{ form_widget(form.comment) }}
+
+                    <br>
+
+                    {{ form_widget(form) }}
+
+                    {{ form_end(form) }}
                 </div>
             </div>
 
-            <h2>Vous avez terminé</h2>
-            <p>Vacance de rêve ? Hebrgement pour le boulot ? peu importe on est avec vous</p>
-
-            {{ form_widget(form) }}
-
-        {{ form_end(form) }}
+ 
     </div>
 
 {% endblock %}

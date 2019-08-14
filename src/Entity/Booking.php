@@ -33,7 +33,7 @@ class Booking
     /**
      * @ORM\Column(type="datetime")
      * @Assert\Date(message="Attention la data d'arrivé doit être au bon format")
-     * @Assert\GreaterThan("today", message="La date d'arrivée doitêtre ultérieure à la date d'aujourd'hui")
+     * @Assert\GreaterThan("today", message="La date d'arrivée doitêtre ultérieure à la date d'aujourd'hui", groups={"front"})
      */
     private $startDate;
 
@@ -104,11 +104,14 @@ class Booking
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      * @return void
      */
     public function PrePersist(){
 
-        $this->amount = $this->ad->getPrice() * $this->getDuration();
+        if(empty($this->amount)){
+            $this->amount = $this->ad->getPrice() * $this->getDuration();
+        }
     }
 
     public function __construct()

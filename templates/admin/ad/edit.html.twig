@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}Modification d'une annonce{% endblock %}
 
@@ -60,6 +60,7 @@
                             {# iterate over each existing tag and render its only field: name #}
                             {% for image in form.images %}
                                 <li class="collection-line">
+                                    <img src="{{image.vars.value.url}}" style="width:200px;">
                                     {{ form_row(image.url) }}
                                     {{ form_row(image.caption) }}
                                 </li>

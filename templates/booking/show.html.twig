@@ -8,7 +8,7 @@
     {% set author = ad.author %}
 
     <div class="container">
-        <h1>Votre réservation n°{{booking.id}}</h1>
+        <h1 class="my-5">Votre réservation n°{{booking.id}}</h1>
 
         {% if app.request.query.get('withAlert') %}
             <div class="alert alert-success">
@@ -24,7 +24,8 @@
         {% endif %}
 
         <div class="row">
-            <div class="col">
+           
+            <div class="col-6">
                 <div class="alert alert-light">
                     <h2>Détails</h2>
                     <dl class="row">
@@ -37,39 +38,81 @@
                         <dt class="col-md-4">Nombre de nuits</dt>
                         <dd class="col-md-8">{{booking.duration}}</dd>
                         <dt class="col-md-4">Montant total</dt>
-                        <dd class="col-md-8">{{booking.amount}} €</dd>
+                        <dd class="col-md-8">{{booking.amount | number_format(2, ',', ' ')}} €</dd>
                         <dt class="col-md-4">Commentaire</dt>
-                        <dd class="col-md-8">{{booking.comment}}</dd>
+
+                        <dd class="col-md-8">
+                            {% if booking.comment is not null %}
+                                {{booking.comment}}
+                            {% else %}
+                                <p>Aucun commentaire</p>
+                            {% endif %}
+                        </dd>
                     </dl>
 
                     <hr>
 
-                    <h2 class="alert-heading"></h2>
                     <div class="row">
 
-                    <div class="col-1">
-                        <img src="{{ author.picture }}" class="avatar avatar-medium">
+                        <div class="col-2">
+                            <img src="{{ author.picture }}" class="avatar avatar-medium">
+                        </div>
+
+                        <div class="col-10">
+                            <h4><a href="{{ path('user_show',{'slug': author.slug})}}">{{ author.firstName}} {{author.lastName}}</a></h4>
+                            <span class="badge badge-primary">{{author.ads |length }} annonces</span> 
+                        </div>
+
                     </div>
 
-                    <div class="col-11">
-                        <h4><a href="{{ path('user_show',{'slug': author.slug})}}">{{ author.firstName}} {{author.lastName}}</a></h4>
-                        <span class="badge badge-primary">{{author.ads |length }} annonces</span> 
-                    </div>
+                    <h2 class="mt-3">Votre avis compte</h2>
+                    {% if date() > date(booking.endDate) %}
+                        {% set comment = booking.ad.commentFromAuthor(app.user) %}
+
+                        {% if comment is not null %}
+                            <blockquote>
+                                {{ comment.content }}
+                            </blockquote>
+
+                            <strong>Note : </strong> {% include 'partials/rating.html.twig' with {'rating':comment.rating} %}
+
+                        {% else %}
+
+                            {{ form_start(form) }}
+
+                                {{ form_label(form.rating, "Note") }}
+                                {{ form_widget(form.rating) }}
+
+                                {{ form_label(form.content, "Commentaire") }}
+                                {{ form_widget(form.content) }}
+
+                                <br>
+
+                                {{ form_widget(form) }}
+
+                            {{ form_end(form) }}
+                        {% endif %}
+                    {% else %}
+                        <p>Vous ne pourrez pas noter cette annonce tant que votre voyage ne sera pas complet</p>
+                    {% endif %}
+
                 </div>
-                {{author.description | raw}}
             </div>
-            <div class="col">
-                <h2 class="alert-heading">Votre hébérgement</h2>
 
-                <h4>
-                    <a href="{{ path('ads_show',{'slug':ad.slug}) }}">{{ad.title}}</a>
-                </h4>
+            <div class="col-6">
+                <div class="alert alert-light">
 
-                <img src="{{ad.coverImage}}" class="img-fluid">
+                    <h2 class="alert-heading">Votre hébérgement</h2>
 
-                {{ad.content |raw}}
+                    <h4>
+                        <a href="{{ path('ads_show',{'slug':ad.slug}) }}">{{ad.title}}</a>
+                    </h4>
+
+                    <img src="{{ad.coverImage}}" class="img-fluid mb-3">
+
+                    {{ad.content |raw}}
+                </div>
             </div>
-        </div>
     </div>
 
 {% endblock %}

@@ -3,11 +3,44 @@ homepage:
     defaults: { _controller: App\Controller\HomeController::home }
 
 #Ads admin
+admin_ads_index:
+    path:     /admin/ads
+    defaults: { _controller: App\Controller\AdminAdController::index }
+
+admin_ads_edit:
+    path:     /admin/ads/{id}/edit
+    defaults: { _controller: App\Controller\AdminAdController::edit }
+    requirements:
+        id: \d+
+
+admin_ads_delete:
+    path:     /admin/ads/{id}/delete
+    defaults: { _controller: App\Controller\AdminAdController::delete }
+    requirements:
+        id: \d+
+
+#Comment admin
+admin_comments_index:
+    path:     /admin/comments
+    defaults: { _controller: App\Controller\AdminCommentController::index }
+
+admin_comments_edit:
+    path:     /admin/comments/{id}/edit
+    defaults: { _controller: App\Controller\AdminCommentController::edit }
+    requirements:
+        id: \d+
+
+admin_comments_delete:
+    path:     /admin/comments/{id}/delete
+    defaults: { _controller: App\Controller\AdminCommentController::delete }
+    requirements:
+        id: \d+
+
+#Ads client
 ads_create:
     path:     /ads/new
     defaults: { _controller: App\Controller\AdController::create }
-
-#Ads client
+    
 ads_index:
     path:     /ads
     defaults: { _controller: App\Controller\AdController::index }
@@ -71,5 +104,22 @@ booking_create:
 booking_show:
     path:     /booking/{id}
     defaults: { _controller: App\Controller\BookingController::show }
+    requirements:
+        id: \d+
+
+#Booking admin
+admin_bookings_index:
+    path:     /admin/bookings
+    defaults: { _controller: App\Controller\AdminBookingController::index }
+
+admin_booking_edit:
+    path:     /admin/bookings/{id}/edit
+    defaults: { _controller: App\Controller\AdminBookingController::edit }
+    requirements:
+        id: \d+
+
+admin_booking_delete:
+    path:     /admin/bookings/{id}/delete
+    defaults: { _controller: App\Controller\AdminBookingController::delete }
     requirements:
         id: \d+

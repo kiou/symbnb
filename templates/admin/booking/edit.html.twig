@@ -1,0 +1,41 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier une réservation{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1 class="my-5">Modifier la réservation n°{{booking.id}}</h1>
+
+        {{ form_start(form) }}
+        <div class="row">
+
+            <div class="col-6">
+                {{ form_label(form.startDate, "Date d'arrivée *") }}
+                {{ form_widget(form.startDate) }}
+
+                {{ form_label(form.endDate, "Date de sortie *") }}
+                {{ form_widget(form.endDate) }}
+
+                {{ form_label(form.comment, "Commentaire *") }}
+                {{ form_widget(form.comment) }}
+            </div>
+
+            <div class="col-6">
+
+                {{ form_label(form.booker, "Visiteur *") }}
+                {{ form_widget(form.booker) }}
+
+                {{ form_label(form.ad, "Annonce *") }}
+                {{ form_widget(form.ad) }}
+            </div>
+
+        </div>
+
+        <br>
+
+        {{ form_widget(form) }}
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

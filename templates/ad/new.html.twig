@@ -5,45 +5,71 @@
 {% block body %}
 
     <div class="container">
-        <h1>Créer une nouvelle annonce</h1>
+        <h1 class="my-5">Créer une nouvelle annonce</h1>
 
         {{ form_start(form) }}
+        <div class="row">
+            <div class="col-6">
 
-		{{ form_label(form.title, "Titre *") }}
-		{{ form_widget(form.title) }}
+                <div class="alert alert-light">
+                    <h2>Informations générales</h2>
+                    <hr>
 
-		{{ form_label(form.slug, "Adresse web *") }}
-		{{ form_widget(form.slug) }}
+                    	{{ form_label(form.title, "Titre *") }}
+                        {{ form_widget(form.title) }}
 
-		{{ form_label(form.coverImage, "Url de l'image principale *") }}
-		{{ form_widget(form.coverImage) }}
+                        {{ form_label(form.slug, "Adresse web *") }}
+                        {{ form_widget(form.slug) }}
 
-		{{ form_label(form.introduction, "Introduction *") }}
-		{{ form_widget(form.introduction) }}
+                        {{ form_label(form.price, "Prix par nuit *") }}
+                        {{ form_widget(form.price) }}
 
-		{{ form_label(form.content, "Contenu *") }}
-		{{ form_widget(form.content) }}
+                        {{ form_label(form.rooms, "Nombre de chambres *") }}
+                        {{ form_widget(form.rooms) }}
 
-		{{ form_label(form.price, "Prix par nuit *") }}
-		{{ form_widget(form.price) }}
+                </div>
 
-		{{ form_label(form.rooms, "Nombre de chambres *") }}
-		{{ form_widget(form.rooms) }}
+                <div class="alert alert-light">
+                    <h2>Détails de l'annonce</h2>
 
-        <div class="form-collection">
-            <h3>Images </h3>
-            <p class="collection-infos">
-            </p>
-            <ul class="collection"  data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
-                {# iterate over each existing tag and render its only field: name #}
-                {% for image in form.images %}
-                    <li class="collection-line">
-						{{ form_row(image.url) }}
-						{{ form_row(image.caption) }}
-					</li>
-                {% endfor %}
-            </ul>
-        </div><br>
+                    {{ form_label(form.introduction, "Introduction *") }}
+                    {{ form_widget(form.introduction) }}
+
+                    {{ form_label(form.content, "Contenu *") }}
+                    {{ form_widget(form.content) }}
+
+                    <hr>
+                </div>
+           
+            </div>
+
+            <div class="col-6">
+
+                <div class="alert alert-light">
+                    <h2>Images de l'annonce</h2>
+                    <hr>
+                    {{ form_label(form.coverImage, "Url de l'image principale *") }}
+                    {{ form_widget(form.coverImage) }}
+
+                    <div class="form-collection">
+                        <h3>Images </h3>
+                        <p class="collection-infos">
+                        </p>
+                        <ul class="collection"  data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+                            {# iterate over each existing tag and render its only field: name #}
+                            {% for image in form.images %}
+                                <li class="collection-line">
+                                    {{ form_row(image.url) }}
+                                    {{ form_row(image.caption) }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div><br>
+
+                </div>
+
+            </div>        
+        </div>
 
         {{ form_widget(form) }}
 

@@ -17,6 +17,9 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                success_handler: App\Services\AfterLoginRedirection
             logout:
                 path:   logout
                 target: login
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

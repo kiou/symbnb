@@ -36,7 +36,7 @@ class AdType extends AbstractType
                 'label' => ' '
             ))
             ->add('Enregistrer', SubmitType::class,[
-                'label' => 'Enregistrer'
+                'label' => 'Enregistrer l\'annonce'
             ]);
         ;
     }

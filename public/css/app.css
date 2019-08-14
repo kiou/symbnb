@@ -19,8 +19,6 @@
 
 .form-collection{
     margin-top: 20px;
-    background-color: #f1f1f1;
-    padding: 20px;
 }
 
 .form-collection ul{
@@ -55,4 +53,14 @@
 
 .datepicker table tr td.disabled, .datepicker table tr td.disabled{
     color:red;
+}
+
+span.rating i{
+    color: goldenrod;
+}
+
+
+.alert .btn{
+    text-decoration: none;
+    color: #fff;
 }
