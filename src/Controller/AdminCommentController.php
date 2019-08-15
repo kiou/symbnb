@@ -9,6 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Comment;
 use App\Form\AdminCommentType;
+use App\Services\PaginationService;
 
 class AdminCommentController extends AbstractController
 {
@@ -18,10 +19,13 @@ class AdminCommentController extends AbstractController
      *
      * @return Response
      */
-    public function index(CommentRepository $repo)
+    public function index(CommentRepository $repo, $page = 1, PaginationService $pagination)
     {
+        $pagination->setEntityClass(Comment::class)
+                   ->setPage($page);
+
         return $this->render('admin/comment/index.html.twig', [
-            'comments' => $repo->findAll()
+            'pagination' => $pagination
         ]);
     }
 

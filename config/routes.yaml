@@ -4,8 +4,12 @@ homepage:
 
 #Ads admin
 admin_ads_index:
-    path:     /admin/ads
-    defaults: { _controller: App\Controller\AdminAdController::index }
+    path:     /admin/ads/{page}
+    defaults:
+        _controller: App\Controller\AdminAdController::index
+        page: 1
+    requirements:
+        page: \d+
 
 admin_ads_edit:
     path:     /admin/ads/{id}/edit
@@ -21,9 +25,13 @@ admin_ads_delete:
 
 #Comment admin
 admin_comments_index:
-    path:     /admin/comments
-    defaults: { _controller: App\Controller\AdminCommentController::index }
-
+    path:     /admin/comments/{page}
+    defaults: 
+        _controller: App\Controller\AdminCommentController::index
+        page: 1
+    requirements:
+        page: \d+
+    
 admin_comments_edit:
     path:     /admin/comments/{id}/edit
     defaults: { _controller: App\Controller\AdminCommentController::edit }
@@ -109,8 +117,12 @@ booking_show:
 
 #Booking admin
 admin_bookings_index:
-    path:     /admin/bookings
-    defaults: { _controller: App\Controller\AdminBookingController::index }
+    path:     /admin/bookings/{page}
+    defaults: 
+        _controller: App\Controller\AdminBookingController::index
+        page: 1
+    requirements:
+        page: \d+
 
 admin_booking_edit:
     path:     /admin/bookings/{id}/edit

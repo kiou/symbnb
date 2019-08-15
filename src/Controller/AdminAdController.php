@@ -9,13 +9,18 @@ use App\Repository\AdRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Services\PaginationService;
 
 class AdminAdController extends AbstractController
 {
-    public function index(AdRepository $repo)
+    public function index(AdRepository $repo, $page = 1, PaginationService $pagination)
     {
+
+        $pagination->setEntityClass(Ad::class)
+                   ->setPage($page);
+        
         return $this->render('admin/ad/index.html.twig', [
-            'ads' => $repo->findAll()
+            'pagination' => $pagination
         ]);
     }
 
