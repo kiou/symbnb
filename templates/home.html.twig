@@ -20,93 +20,32 @@
         <h2 class="h1 my-5">Nos appartements stars</h2>
     
         <div class="row">
-            <div class="col-md-4">
-                <div class="card-header text-center">
-                    3 chambres, <strong>49€ / nuit</strong> <br>
-                    <small>Pas encore noté</small>
-                </div>
-
-                <img src="http://placehold.it/1000x400" style="height:200px; width:100%; display;block;">
-
-                <div class="card-body">
-                    <h4 class="card-title">Appartement de ouf</h4>
-                    <p class="card-text">
-                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux t
-                    </p>
-                    <a href="#" class="btn btn-secondary">En savoir plus</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-header text-center">
-                    3 chambres, <strong>49€ / nuit</strong> <br>
-                    <small>Pas encore noté</small>
-                </div>
-
-                <img src="http://placehold.it/1000x400" style="height:200px; width:100%; display;block;">
-
-                <div class="card-body">
-                    <h4 class="card-title">Appartement de ouf</h4>
-                    <p class="card-text">
-                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux t
-                    </p>
-                    <a href="#" class="btn btn-secondary">En savoir plus</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-header text-center">
-                    3 chambres, <strong>49€ / nuit</strong> <br>
-                    <small>Pas encore noté</small>
-                </div>
-
-                <img src="http://placehold.it/1000x400" style="height:200px; width:100%; display;block;">
-
-                <div class="card-body">
-                    <h4 class="card-title">Appartement de ouf</h4>
-                    <p class="card-text">
-                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux t
-                    </p>
-                    <a href="#" class="btn btn-secondary">En savoir plus</a>
-                </div>
-            </div>
+            {% for data in ads %}
+                {% include 'ad/_ad.html.twig' with {'ad': data.annonce}%}
+            {% endfor %}
         </div>
 
         <h2 class="h1 my-5">Nos propriétaires stars !</h2>
-
         <div class="row">
+            {% for data in users %}
             <div class="col">
                 <div class="card border-secondary mb-3">
                     <div class="card-body">
-                        <h4 class="card-title">Lior Chamla</h4>
+                        <h4 class="card-title">{{data.user.firstName}} {{data.user.lastName}}</h4>
                         
                         <hr>
 
                         <div class="card-text">
-                            <img src="http://placehold.it/64x64" class="float-left mr-3">
+                            <img src="{{data.user.picture}}" class="float-left mr-3">
                             <p>
-                                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux t
+                                {{data.user.introduction}}
                             </p>
-                            <a href="#" class="btn btn-success float-right">En savoir plus</a>    
+                            <a href="{{ path('user_show',{'slug':data.user.slug}) }}" class="btn btn-success float-right">En savoir plus</a>    
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card border-secondary mb-3">
-                    <div class="card-body">
-                        <h4 class="card-title">Lior Chamla</h4>
-                        
-                        <hr>
-
-                        <div class="card-text">
-                            <img src="http://placehold.it/64x64" class="float-left mr-3">
-                            <p>
-                                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux t
-                            </p>
-                            <a href="#" class="btn btn-success float-right">En savoir plus</a>    
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 </div>
 

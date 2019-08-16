@@ -135,3 +135,8 @@ admin_booking_delete:
     defaults: { _controller: App\Controller\AdminBookingController::delete }
     requirements:
         id: \d+
+
+#admin dashboard
+dashboard:
+    path: /admin/
+    defaults: { _controller: App\Controller\AdminDashboardController::index }
